@@ -1,10 +1,7 @@
 import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
-import {
-  getUserByUsername,
-  addUser as addUserInMemory,
-} from "./mockStore";
+import { getUserByUsername } from "./mockStore";
 import bcrypt from "bcryptjs";
 import { authConfig } from "./auth.config";
 
@@ -52,7 +49,7 @@ export const {
     }),
   ],
   callbacks: {
-    async signIn({ user, account, profile }) {
+    async signIn({ account }) {
       if (account.provider === "github") {
         // Skip DB persistence when using GitHub; accept login for demo
         return true;

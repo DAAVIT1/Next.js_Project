@@ -97,15 +97,13 @@ export const register = async (previousState, formData) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const newUser = new User({
+    addUserInMemory({
       username,
       email,
       password: hashedPassword,
       img,
     });
-
-    await newUser.save();
-    console.log("saved to db");
+    console.log("saved to in-memory store");
 
     return { success: true };
   } catch (err) {
