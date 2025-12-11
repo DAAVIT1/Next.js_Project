@@ -1,6 +1,6 @@
 // Simple in-memory store to avoid external DB for demo/deploy.
 // Data resets on server restart.
-const { randomUUID } = require("crypto");
+import { randomUUID } from "crypto";
 
 const users = [
   {

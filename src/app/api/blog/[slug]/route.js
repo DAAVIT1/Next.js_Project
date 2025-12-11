@@ -1,14 +1,11 @@
-import { Post } from "@/lib/models";
-import { connectToDb } from "@/lib/utils";
+import { getPostBySlug, deletePostBySlug } from "@/lib/mockStore";
 import { NextResponse } from "next/server";
 
 export const GET = async (request, { params }) => {
   const { slug } = params;
 
   try {
-    connectToDb();
-
-    const post = await Post.findOne({ slug });
+    const post = getPostBySlug(slug);
     return NextResponse.json(post);
   } catch (err) {
     console.log(err);
@@ -20,9 +17,7 @@ export const DELETE = async (request, { params }) => {
   const { slug } = params;
 
   try {
-    connectToDb();
-
-    await Post.deleteOne({ slug });
+    deletePostBySlug(slug);
     return NextResponse.json("Post deleted");
   } catch (err) {
     console.log(err);

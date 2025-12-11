@@ -1,12 +1,9 @@
-import { Post } from "@/lib/models";
-import { connectToDb } from "@/lib/utils";
+import { getAllPosts } from "@/lib/mockStore";
 import { NextResponse } from "next/server";
 
 export const GET = async (request) => {
   try {
-    connectToDb();
-
-    const posts = await Post.find();
+    const posts = getAllPosts();
     return NextResponse.json(posts);
   } catch (err) {
     console.log(err);

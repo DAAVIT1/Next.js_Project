@@ -1,8 +1,13 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { Post, User } from "./models";
-import { connectToDb } from "./utils";
+import {
+  addPost as addPostInMemory,
+  deletePostById,
+  addUser as addUserInMemory,
+  deleteUserById,
+  getUserByUsername,
+} from "./mockStore";
 import { signIn, signOut } from "./auth";
 import bcrypt from "bcryptjs";
 
@@ -14,16 +19,8 @@ export const addPost = async (prevState,formData) => {
   const { title, desc, slug, userId } = Object.fromEntries(formData);
 
   try {
-    connectToDb();
-    const newPost = new Post({
-      title,
-      desc,
-      slug,
-      userId,
-    });
-
-    await newPost.save();
-    console.log("saved to db");
+    addPostInMemory({ title, desc, slug, userId });
+    console.log("saved to in-memory store");
     revalidatePath("/blog");
     revalidatePath("/admin");
   } catch (err) {
@@ -36,10 +33,8 @@ export const deletePost = async (formData) => {
   const { id } = Object.fromEntries(formData);
 
   try {
-    connectToDb();
-
-    await Post.findByIdAndDelete(id);
-    console.log("deleted from db");
+    deletePostById(id);
+    console.log("deleted from in-memory store");
     revalidatePath("/blog");
     revalidatePath("/admin");
   } catch (err) {
@@ -52,16 +47,8 @@ export const addUser = async (prevState,formData) => {
   const { username, email, password, img } = Object.fromEntries(formData);
 
   try {
-    connectToDb();
-    const newUser = new User({
-      username,
-      email,
-      password,
-      img,
-    });
-
-    await newUser.save();
-    console.log("saved to db");
+    addUserInMemory({ username, email, password, img });
+    console.log("saved to in-memory store");
     revalidatePath("/admin");
   } catch (err) {
     console.log(err);
@@ -73,11 +60,8 @@ export const deleteUser = async (formData) => {
   const { id } = Object.fromEntries(formData);
 
   try {
-    connectToDb();
-
-    await Post.deleteMany({ userId: id });
-    await User.findByIdAndDelete(id);
-    console.log("deleted from db");
+    deleteUserById(id);
+    console.log("deleted from in-memory store");
     revalidatePath("/admin");
   } catch (err) {
     console.log(err);
@@ -104,9 +88,7 @@ export const register = async (previousState, formData) => {
   }
 
   try {
-    connectToDb();
-
-    const user = await User.findOne({ username });
+    const user = getUserByUsername(username);
 
     if (user) {
       return { error: "Username already exists" };
