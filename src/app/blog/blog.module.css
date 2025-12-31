@@ -177,13 +177,19 @@
 
   .intro {
     padding: 18px;
+    gap: 24px;
   }
 
   .introMedia {
     width: 100%;
     max-width: 100%;
-    height: 240px;
-    min-height: 200px;
+    height: 280px;
+    min-height: 280px;
+    align-self: center;
+  }
+
+  .introImg {
+    object-fit: cover;
   }
 }
 

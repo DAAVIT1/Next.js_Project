@@ -6,6 +6,9 @@ const Home = () => {
     <div className={styles.container}>
       <div className={styles.textContainer}>
         <h1 className={styles.title}>Creative Thoughts Agency.</h1>
+        <div className={styles.imgContainerMobile}>
+          <Image src="/hero.gif" alt="" fill className={styles.heroImg}/>
+        </div>
         <p className={styles.desc}>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero
           blanditiis adipisci minima reiciendis a autem assumenda dolore.
@@ -18,7 +21,7 @@ const Home = () => {
           <Image src="/brands.png" alt="" fill className={styles.brandImg}/>
         </div>
       </div>
-      <div className={styles.imgContainer}>
+      <div className={styles.imgContainerDesktop}>
         <Image src="/hero.gif" alt="" fill className={styles.heroImg}/>
       </div>
     </div>
