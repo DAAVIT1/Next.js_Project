@@ -11,6 +11,11 @@ export const metadata = {
     template:"%s | Next.js 14"
   },
   description: "Next.js starter app description",
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({ children }) {
