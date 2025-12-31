@@ -9,6 +9,9 @@ const Home = () => {
         <div className={styles.imgContainerMobile}>
           <Image src="/hero.gif" alt="" fill className={styles.heroImg}/>
         </div>
+        <p className={styles.animationTextMobile}>
+          Bringing creative ideas to life through innovative design and cutting-edge technology.
+        </p>
         <p className={styles.desc}>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero
           blanditiis adipisci minima reiciendis a autem assumenda dolore.

@@ -60,6 +60,14 @@
   border-radius: 12px;
 }
 
+.animationText {
+  display: none;
+}
+
+.animationTextMobile {
+  display: none;
+}
+
 @media (max-width: 1024px) {
   .container {
     flex-direction: column;
@@ -102,8 +110,10 @@
 
   .brands{
     width: 100%;
+    max-width: 500px;
     height: 40px;
     align-self: center;
+    margin: 0 auto;
   }
 
   .buttons{
@@ -125,18 +135,32 @@
   .imgContainerMobile {
     display: block;
     width: 100%;
-    max-width: 500px;
-    height: 250px;
+    max-width: 400px;
+    height: 200px;
     position: relative;
     border-radius: 20px;
     overflow: hidden;
-    margin: 15px auto;
+    margin: 15px auto 10px;
     box-shadow: 0 8px 32px rgba(54, 115, 253, 0.15);
   }
 
   .imgContainerMobile .heroImg {
     object-fit: cover;
     border-radius: 20px;
+  }
+
+  .animationText {
+    display: none;
+  }
+
+  .animationTextMobile {
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    color: var(--textSoft);
+    margin-bottom: 20px;
+    line-height: 1.6;
+    padding: 0 10px;
   }
 }
 

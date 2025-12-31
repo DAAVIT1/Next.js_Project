@@ -183,13 +183,20 @@
   .introMedia {
     width: 100%;
     max-width: 100%;
-    height: 280px;
-    min-height: 280px;
+    height: 260px;
+    min-height: 260px;
     align-self: center;
+    display: block;
   }
 
   .introImg {
     object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .pulse {
+    display: block;
   }
 }
 

@@ -19,10 +19,16 @@
   object-fit: cover;
 }
 
-.date{
+.dateDesktop{
+  display: none;
+}
+
+.dateMobile{
+  display: block;
   font-size: 12px;
-  transform: rotate(270deg);
-  margin: auto;
+  color: var(--textSoft);
+  margin-top: 12px;
+  font-weight: 300;
 }
 
 .title{
@@ -62,9 +68,15 @@
     width: 100%;
   }
 
-  .date{
-    transform: none;
-    margin: 0;
+  .dateDesktop{
+    display: none;
+  }
+
+  .dateMobile{
+    display: block;
     font-size: 11px;
+    color: var(--textSoft);
+    margin-top: 8px;
+    font-weight: 300;
   }
 }
